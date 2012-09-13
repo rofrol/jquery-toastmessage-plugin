@@ -64,7 +64,8 @@
 				type: 				'notice', 			// notice, warning, error, success
                 position:           'top-right',        // top-left, top-center, top-right, middle-left, middle-center, middle-right ... Position of the toast container holding different toast. Position can be set only once at the very first call, changing the position after the first call does nothing
                 closeText:          '',                 // text which will be shown as close button, set to '' when you want to introduce an image via css
-                close:              null                // callback function when the toastmessage is closed
+                close:              null,               // callback function when the toastmessage is closed
+                insertBefore:		'#main'
             };
 
     var methods = {
@@ -83,9 +84,10 @@
 			// declare variables
             var toastWrapAll, toastItemOuter, toastItemInner, toastItemClose, toastItemImage;
 
-			toastWrapAll	= (!$('.toast-container').length) ? $('<div></div>').addClass('toast-container').addClass('toast-position-' + localSettings.position).appendTo('body') : $('.toast-container');
+			toastWrapAll	= (!$('.toast-container').length) ? $('<div></div>').addClass('toast-container').addClass('toast-position-' + localSettings.position).insertBefore(localSettings.insertBefore) : $('.toast-container');
 			toastItemOuter	= $('<div></div>').addClass('toast-item-wrapper');
 			toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).appendTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
+			if(typeof localSettings.details != 'undefined' && localSettings.details.length != 0) toastItemInner.append('<p><a class="details_toggler" href="#" onclick="$(this).parent().next(\'.details\').toggle();return false;">Szczegóły</a><p class="details">'+localSettings.details+'</p></p>');
 			toastItemClose	= $('<div></div>').addClass('toast-item-close').prependTo(toastItemInner).html(localSettings.closeText).click(function() { $().toastmessage('removeToast',toastItemInner, localSettings) });
 			toastItemImage  = $('<div></div>').addClass('toast-item-image').addClass('toast-item-image-' + localSettings.type).prependTo(toastItemInner);
 
