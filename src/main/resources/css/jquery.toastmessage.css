@@ -51,19 +51,23 @@
 }
 
 .toast-item-image-notice {
-    background:url(../../images/notice.png);
+    background:url(../../images/toast-item-image.png);
+    background-position: 0px 32px;
 }
 
 .toast-item-image-success {
-    background:url(../../images/success.png);
+    background:url(../../images/toast-item-image.png);
+    background-position: 0px 64px;
 }
 
 .toast-item-image-warning {
-    background:url(../../images/warning.png);
+    background:url(../../images/toast-item-image.png);
+    background-position: 0px 96px;
 }
 
 .toast-item-image-error {
-    background:url(../../images/error.png);
+    background:url(../../images/toast-item-image.png);
+    background-position: 0px 0px;
 }
 
 

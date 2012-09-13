@@ -161,3 +161,6 @@
     };
 
 })(jQuery);
+
+// preload image when there is connection error after loading toast http://stackoverflow.com/a/901699/588759
+jQuery.get(link('resources/libs/jquery-toastmessage-plugin/src/main/resources/images/toast-item-image.png'));
