@@ -133,7 +133,7 @@
 
 		removeToast: function(obj, options)
 		{
-			obj.animate({opacity: '0'}, 600, function()
+			obj.animate({opacity: '0'}, 100, function()
 			{
 				obj.parent().animate({height: '0px'}, 300, function()
 				{
